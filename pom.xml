@@ -131,6 +131,24 @@
 			<artifactId>extentreports-cucumber4-adapter</artifactId>
 			<version>1.1.0.10</version>
 		</dependency>
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>5.6.3</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.github.luben/zstd-jni -->
+		<dependency>
+			<groupId>com.github.luben</groupId>
+			<artifactId>zstd-jni</artifactId>
+			<version>1.5.5-11</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<filters>
@@ -147,10 +165,10 @@
 						<suiteXmlFile>${runner}</suiteXmlFile>
 					</suiteXmlFiles>
 					<systemPropertyVariables>
-						<TEST_MANAGER_API_HOST>https://runs.dev.lippia.io</TEST_MANAGER_API_HOST>
+						<TEST_MANAGER_API_HOST></TEST_MANAGER_API_HOST>
 						<TEST_MANAGER_API_PORT></TEST_MANAGER_API_PORT>
-						<TEST_MANAGER_RUN_NAME>[Demo] Run #1 7es7 Adapter Injector</TEST_MANAGER_RUN_NAME>
-						<TEST_MANAGER_PROJECT_CODE>GESHTJ</TEST_MANAGER_PROJECT_CODE>
+						<TEST_MANAGER_RUN_NAME></TEST_MANAGER_RUN_NAME>
+						<TEST_MANAGER_PROJECT_CODE></TEST_MANAGER_PROJECT_CODE>
 						<TEST_MANAGER_USERNAME></TEST_MANAGER_USERNAME>
 						<TEST_MANAGER_PASSWORD></TEST_MANAGER_PASSWORD>
 

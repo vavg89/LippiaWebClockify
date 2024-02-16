@@ -20,7 +20,7 @@ The scenarios can be written using BDD methodology.
 On each declared step you can insert the calls defined from service classes -->
 
 ## System Requirements: 
-+ jdk: https://docs.oracle.com/en/java/javase/index.html 
++ jdk: https://docs.oracle.com/en/java/javase/index.html (compatible jdk versions 1.8/14/17)
 + maven: https://maven.apache.org/download.cgi 
 + git client: https://www.atlassian.com/git/tutorials/install-git 
 + docker 18.09+: https://docs.docker.com/install/linux/docker-ce/ubuntu/  _OPTIONAL_ 
@@ -70,7 +70,7 @@ This sample project includes the required components as binaries, docker contain
       OUTPUT:
         Apache Maven 3.8.2 (ea98e05a04480131370aa0c110b8c54cf726c06f)
         Maven home: /opt/apache-maven-3.8.2
-        Java version: 13.0.5.1, vendor: Debian, runtime: /usr/lib/jvm/java-13-openjdk-amd64
+        Java version: 17.0.9, vendor: Debian, runtime: /usr/lib/jvm/java-17-openjdk-amd64
         Default locale: en_US, platform encoding: UTF-8
         OS name: "linux", version: "5.10.0-6parrot1-amd64", arch: "amd64", family: "unix"
     ```
