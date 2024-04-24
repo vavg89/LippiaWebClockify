@@ -16,12 +16,17 @@ public class ClockifyLoginSteps extends PageSteps {
 
     @When("^The client login with credentials email (.*) and password (.*)$")
     public void login(String email, String password) {
-        ClockifyLoginService.enterLoginPage();
+        //ClockifyLoginService.enterLoginPage();
         ClockifyLoginService.login(email,password);
     }
 
+    @When("^The client click (.*) button$")
+    public void clickButtonText(String text) {
+        ClockifyLoginService.clickButtonWithText(text);
+    }
     @Then("The client verify clockify home page is displayed")
     public void clockifyHomePageIsDisplayed() {
         ClockifyLoginService.verifyMessage();
+        ClockifyLoginService.verifyUrl("https://app.clockify.me/tracker#");
     }
 }
