@@ -3,7 +3,7 @@ Feature: Login in clockify web
 
   Scenario: Login with valid credentials
     Given The client is on clockify page
-    When The client login with credentials email nicojnr11@gmail.com and password 123456789
+    When The client login with credentials email user and password password
     Then The client verify clockify home page is displayed
 
   @Regression @Clockify @Login
@@ -15,5 +15,5 @@ Feature: Login in clockify web
     Then The client verify clockify home page is displayed
 
     Examples:
-      | text1  | text2           | user                | password  |
-      | Log in | Log in manually | nicojnr11@gmail.com | 123456789 |
+      | text1  | text2           | user | password |
+      | Log in | Log in manually | user | password |
