@@ -27,7 +27,7 @@
 
 		<!-- cucumber options -->
 		<cucumber.stepsDefinitions>--glue / </cucumber.stepsDefinitions>
-		<cucumber.hooks>--glue	com/crowdar/bdd/cukes/hooks</cucumber.hooks>
+		<cucumber.hooks>--glue lippia.web.hooks</cucumber.hooks>
 		<cucumber.tags>@Regression</cucumber.tags>
 		<pretty.plugin>--plugin pretty</pretty.plugin>
 		<cucumber.report>--plugin lippia.web.reporters.CucumberReporter:</cucumber.report>
