@@ -15,7 +15,13 @@ public class ClockifyLoginSteps extends PageSteps {
 
 
     @When("^The client login with credentials email (.*) and password (.*)$")
-    public void login(String email, String password) {
+    public void login(String emailPlaceholder, String passwordPlaceholder) {
+
+        String email = System.getProperty(emailPlaceholder);
+        String password = System.getProperty(passwordPlaceholder);
+
+        System.out.println("Email: " + email);
+        System.out.println("Password: " + password);
         //ClockifyLoginService.enterLoginPage();
         ClockifyLoginService.login(email,password);
     }
