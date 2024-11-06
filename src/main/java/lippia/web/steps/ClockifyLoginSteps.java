@@ -1,6 +1,8 @@
 package lippia.web.steps;
 
 import com.crowdar.core.PageSteps;
+import com.crowdar.core.PropertyManager;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -8,31 +10,29 @@ import lippia.web.services.ClockifyLoginService;
 
 public class ClockifyLoginSteps extends PageSteps {
 
-    @Given("^The client is on clockify page$")
+    @Given("Ingreso a clockify web")
     public void home() {
         ClockifyLoginService.navegarWeb();
     }
 
+    @When("^El usuario selecciona el idioma (.*)$")
+    public void seleccionarIdioma(String idioma) {
+        ClockifyLoginService.seleccionarIdioma(idioma);
+    }
 
-    @When("^The client login with credentials email (.*) and password (.*)$")
+    @When("^El usuario ingresa las credenciales (.*) y la contraseña (.*) he ingresa$")
     public void login(String emailPlaceholder, String passwordPlaceholder) {
 
-        String email = System.getProperty(emailPlaceholder);
-        String password = System.getProperty(passwordPlaceholder);
+        String email = PropertyManager.getProperty("web.email");
+        String password = PropertyManager.getProperty("web.password");
 
-        System.out.println("Email: " + email);
-        System.out.println("Password: " + password);
-        //ClockifyLoginService.enterLoginPage();
-        ClockifyLoginService.login(email,password);
+        //System.out.println("Email: " + email);
+        //System.out.println("Password: " + password);
+        ClockifyLoginService.login(email, password);
     }
 
-    @When("^The client click (.*) button$")
-    public void clickButtonText(String text) {
-        ClockifyLoginService.clickButtonWithText(text);
-    }
-    @Then("The client verify clockify home page is displayed")
-    public void clockifyHomePageIsDisplayed() {
-        ClockifyLoginService.verifyMessage();
-        ClockifyLoginService.verifyUrl("https://app.clockify.me/tracker#");
+    @Then("^El usuario debe haber (.*)$")
+    public void clockifyHomePageIsDisplayed(String resultado) {
+        ClockifyLoginService.verificarResultado(resultado);
     }
 }

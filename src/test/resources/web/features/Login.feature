@@ -1,18 +1,16 @@
-Feature: Login in clockify web
+Feature: Login en clockify web
 
-  Scenario: Login with valid credentials
-    Given The client is on clockify page
-    When The client login with credentials email user and password password
-    Then The client verify clockify home page is displayed
+  Background:
+    Given Ingreso a clockify web
 
-  @Regression @Clockify @Login
-  Scenario Outline: Login with parameters
-    Given The client is on clockify page
-    When The client click <text1> button
-    And The client click <text2> button
-    When The client login with credentials email <user> and password <password>
-    Then The client verify clockify home page is displayed
+  @Regression @Login
+  Scenario Outline: El usuario intenta hacer login manualmente con "<caso>"
+    When El usuario hace click en el boton <text1>
+    And El usuario selecciona el idioma <idioma>
+    And El usuario hace click en el boton <text2>
+    And El usuario ingresa las credenciales <username> y la contraseña <password> he ingresa
+    Then El usuario debe haber <resultado>
 
     Examples:
-      | text1  | text2           | user          | password        |
-      | Log in | Log in manually | USERNAME_ENV  | PASSWORD_ENV    |
+      | idioma  | caso          | text1 | text2        | username     | password     | resultado |
+      | Español | Datos validos | Login | Login manual | USERNAME_ENV | PASSWORD_ENV | accedido  |
