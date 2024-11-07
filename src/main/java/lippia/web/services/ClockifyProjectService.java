@@ -3,7 +3,6 @@ package lippia.web.services;
 import java.util.Random;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import com.crowdar.core.PropertyManager;
 import com.crowdar.core.actions.ActionManager;
 import static com.crowdar.core.actions.WebActionManager.navigateTo;
+import com.crowdar.driver.DriverManager;
 
 import lippia.web.constants.ClockifyProjectConstants;
 
@@ -54,36 +54,37 @@ public class ClockifyProjectService extends ActionManager {
         return baseNombre + "_" + sb.toString();
     }
 
-    public static void verificarResultado(String varLogica) {
-        WebDriver driver = getDriver(); // Obtén el WebDriver desde la clase base ActionManager
-        
-        switch (varLogica.toLowerCase()) {
-            case "proyecto creado correctamente":
-                setInput(ClockifyProjectConstants.BUTTON_PLACEHOLDER_XPATH, projectName);
-                WebElement searchBox = driver.findElement(By.xpath(ClockifyProjectConstants.BUTTON_PLACEHOLDER_XPATH));
-                searchBox.sendKeys(Keys.ENTER);
-                click(ClockifyProjectConstants.BUTTON_ARROW_DOWN_XPATH);
+   public static void verificarResultado(String varLogica) {
+    WebDriver driver = DriverManager.getDriverInstance(); // Obtiene el WebDriver a partir del DriverManager
 
-                String projectXpath = String.format(ClockifyProjectConstants.PROJECT_NAMES_IN_TABLE_XPATH, projectName);
-                boolean isProjectPresent = isElementPresent(projectXpath, driver);
+    switch (varLogica.toLowerCase()) {
+        case "proyecto creado correctamente":
+            // Establece el filtro para buscar el proyecto en la tabla
+            setInput(ClockifyProjectConstants.BUTTON_PLACEHOLDER_XPATH, projectName);
+            click(ClockifyProjectConstants.BUTTON_APLICAR_XPATH);
 
-                if (!isProjectPresent) {
-                    throw new AssertionError("El proyecto con nombre " + projectName + " no fue encontrado en la tabla.");
-                }
+            // Verifica si el nombre del proyecto y el cliente están presentes
+            boolean isProjectPresent = isElementPresent("//span[normalize-space()='" + projectName + "']", driver);
+            boolean isClientPresent = isElementPresent("//span[normalize-space()='" + projectCliente + "']", driver);
 
-                break;
+            // Validación: si alguno no está presente, lanza un error
+            if (!isProjectPresent || !isClientPresent) {
+                throw new AssertionError("El proyecto con nombre '" + projectName + "' o el cliente '" + projectCliente + "' no fueron encontrados en la tabla.");
+            }
+            break;
 
-            default:
-                throw new IllegalArgumentException("Tipo de escenario no reconocido: " + varLogica);
-        }
+        default:
+            throw new IllegalArgumentException("Tipo de escenario no reconocido: " + varLogica);
     }
 
-    private static boolean isElementPresent(String xpath, WebDriver driver) {
-        try {
-            WebElement element = driver.findElement(By.xpath(xpath));
-            return element.isDisplayed();
-        } catch (NoSuchElementException e) {
-            return false;
-        }
+}
+
+private static boolean isElementPresent(String xpath, WebDriver driver) {
+    try {
+        WebElement element = driver.findElement(By.xpath(xpath));
+        return element.isDisplayed();
+    } catch (NoSuchElementException e) {
+        return false;
     }
+}
 }
