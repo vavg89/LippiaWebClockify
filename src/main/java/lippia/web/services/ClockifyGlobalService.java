@@ -4,6 +4,7 @@ import com.crowdar.core.actions.ActionManager;
 
 import lippia.web.constants.ClockifyLoginConstants;
 import lippia.web.constants.ClockifyProjectConstants;
+import lippia.web.constants.ClockifyWorkspaceConstants;
 
 public class ClockifyGlobalService extends ActionManager {
 
@@ -23,6 +24,18 @@ public class ClockifyGlobalService extends ActionManager {
                 break;
             case "Login manual":
                 click(ClockifyLoginConstants.BUTTON_LOGIN_MANUAL_XPATH);
+                break;
+            case "workspace":
+                click(ClockifyWorkspaceConstants.BUTTON_WORKSPACE_XPATH);
+                break;
+            case "gestionar espacios de trabajo":
+                click(ClockifyWorkspaceConstants.BUTTON_G_WORKSPACE_XPATH);
+                break;
+            case "crear nuevo espacio de trabajo":
+                click(ClockifyWorkspaceConstants.BUTTON_CREATE_WORKSPACE_E_XPATH);
+                break;
+            case "CREAR WORKSPACE":
+                click(ClockifyWorkspaceConstants.BUTTON_CREATE_WORKSPACE_XPATH);
                 break;
             default:
                 throw new IllegalArgumentException("Botón no encontrado: " + boton);
