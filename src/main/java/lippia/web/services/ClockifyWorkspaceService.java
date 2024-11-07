@@ -72,25 +72,13 @@ private static boolean waitForElementToBeVisible(String xpath, WebDriver driver)
 }
 
 
-    private static void scrollToLastElement(WebDriver driver) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        WebElement container = driver.findElement(By.xpath("//div[@class='cl-page-wrapper']"));
-
-        long lastHeight = (long) js.executeScript("return arguments[0].scrollHeight;", container);
-        while (true) {
+ private static void scrollToLastElement(WebDriver driver) {
+        try {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            WebElement container = driver.findElement(By.xpath("//div[@class='cl-page-wrapper']"));
             js.executeScript("arguments[0].scrollTop = arguments[0].scrollHeight;", container);
-            try {
-              
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            long newHeight = (long) js.executeScript("return arguments[0].scrollHeight;", container);
-            if (newHeight == lastHeight) {
-                break; 
-            }
-            lastHeight = newHeight;
+        } catch (Exception e) {
+             throw e;
         }
     }
 }
