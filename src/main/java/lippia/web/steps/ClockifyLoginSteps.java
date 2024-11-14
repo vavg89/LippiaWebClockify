@@ -1,6 +1,10 @@
 package lippia.web.steps;
 
 import com.crowdar.core.PageSteps;
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,6 +18,7 @@ public class ClockifyLoginSteps extends PageSteps {
     }
 
 
+<<<<<<< Updated upstream
     @When("^The client login with credentials email (.*) and password (.*)$")
     public void login(String emailPlaceholder, String passwordPlaceholder) {
 
@@ -24,6 +29,11 @@ public class ClockifyLoginSteps extends PageSteps {
         System.out.println("Password: " + password);
         //ClockifyLoginService.enterLoginPage();
         ClockifyLoginService.login(email,password);
+=======
+    @When("^El usuario ingresa a clockify (.*)$")
+    public void login(String escenario) {
+        ClockifyLoginService.login(escenario);
+>>>>>>> Stashed changes
     }
 
     @When("^The client click (.*) button$")
