@@ -44,6 +44,9 @@ public class ClockifyGlobalService extends ActionManager {
             case "Manual":
                 click(ClockifyRegistroHorasConstants.BUTTON_MANUAL_XPATH);
                 break;
+            case "AÑADIR":
+                click(ClockifyRegistroHorasConstants.BUTTON_A_XPATH);
+                break;
             default:
                 throw new IllegalArgumentException("Botón no encontrado: " + boton);
         }

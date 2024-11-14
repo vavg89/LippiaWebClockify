@@ -2,7 +2,6 @@ package lippia.web.services;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -42,18 +41,10 @@ public class ClockifyRegistroHorasService extends ActionManager {
 
     public static void verificarResultadoRegistroHoras(String varLogica) {
         WebDriver driver = DriverManager.getDriverInstance();
-
+        WebDriverWait wait = new WebDriverWait(driver, 30);
         switch (varLogica.toLowerCase()) {
             case "registro creado exitosamente":
-                try {
-                    WebDriverWait wait = new WebDriverWait(driver, 30);
-                    WebElement mensajeExito = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@aria-label='Se ha creado la entrada de tiempo']")));
-                    if (!mensajeExito.isDisplayed()) {
-                        throw new AssertionError("No se encontró el mensaje de confirmación de creación del registro de horas.");
-                    }
-                } catch (Exception e) {
-                    throw new AssertionError("No se encontró el mensaje de confirmación de creación del registro de horas. Error: " + e.getMessage());
-                }
+                wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@aria-label='Se ha creado la entrada de tiempo']")));
                 break;
 
             default:

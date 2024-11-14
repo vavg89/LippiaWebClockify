@@ -8,8 +8,7 @@ import lippia.web.services.ClockifyRegistroHorasService;
 
 public class ClockifyRegistroHorasSteps extends PageSteps {
 
-
-    @And("^El usuario ingresa la fecha (.*) desde las (.*) hasta las (.*) del (.*)")
+    @And("^El usuario ingresa los datos (.*) desde el (.*) hasta el (.*) del (.*)")
     public void completarFormulario(String scenarioType, String fechaProporcionada, String horaDesdeProporcionada, String horaHastaProporcionada) {
         ClockifyRegistroHorasService.RegistroHoras(scenarioType, fechaProporcionada, horaDesdeProporcionada, horaHastaProporcionada);
     }

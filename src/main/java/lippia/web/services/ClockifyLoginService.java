@@ -1,40 +1,27 @@
 package lippia.web.services;
 
-<<<<<<< Updated upstream
-=======
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
->>>>>>> Stashed changes
 import com.crowdar.core.PropertyManager;
 import com.crowdar.core.actions.ActionManager;
-import com.crowdar.core.actions.WebActionManager;
-import com.crowdar.driver.DriverManager;
-import lippia.web.constants.ClockifyLoginConstants;
-import org.testng.Assert;
-
 import static com.crowdar.core.actions.WebActionManager.navigateTo;
-import static com.crowdar.core.actions.WebActionManager.waitTabOpening;
+import com.crowdar.driver.DriverManager;
+
+import lippia.web.constants.ClockifyLoginConstants;
 
 public class ClockifyLoginService extends ActionManager {
 
-    public static void navegarWeb(){
+    public static void navegarWeb() {
         navigateTo(PropertyManager.getProperty("web.base.url"));
     }
 
-    public static void enterLoginPage(){
+    public static void enterLoginPage() {
         click(ClockifyLoginConstants.HEADER_lOGIN_XPATH);
     }
 
-<<<<<<< Updated upstream
-    public static void login(String email, String password) {
-        //click(ClockifyLoginConstants.BUTTON_MANUAL_LOGIN_XPATH);
-        setInput(ClockifyLoginConstants.INPUT_EMAIL_NAME, email);
-        setInput(ClockifyLoginConstants.INPUT_PASSWORD_NAME, password);
-        click(ClockifyLoginConstants.BUTTON_LOGIN_XPATH);
-=======
     public static void seleccionarIdioma(String idioma) {
         // Verificar si el idioma actual ya es el seleccionado
         String idiomaActual = getText(ClockifyLoginConstants.BUTTON_IDIOMA_XPATH); // Obtener el idioma actual mostrado
@@ -46,19 +33,10 @@ public class ClockifyLoginService extends ActionManager {
         } else {
             System.out.println("El idioma " + idioma + " ya está seleccionado.");
         }
->>>>>>> Stashed changes
     }
 
     public static void login(String escenario) {
 
-<<<<<<< Updated upstream
-    public static void clickButtonWithText(String text) {
-        click(ClockifyLoginConstants.BUTTON_LOGIN_WITHTEXT_XPATH.replace("%s",text));
-    }
-
-    public static void verifyUrl(String url){
-        Assert.assertEquals(url,DriverManager.getDriverInstance().getCurrentUrl(), "Url No coincide");
-=======
         String emailCorrecto = PropertyManager.getProperty("web.email");
         String passwordCorrecto = PropertyManager.getProperty("web.password");
         switch (escenario.toLowerCase()) {
@@ -94,7 +72,6 @@ public class ClockifyLoginService extends ActionManager {
             default:
                 throw new IllegalArgumentException("Tipo de escenario no reconocido: " + resultado);
         }
->>>>>>> Stashed changes
     }
 
 }
